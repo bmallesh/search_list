@@ -6,17 +6,24 @@ class SearchInputComponent extends React.Component {
     super(props);
     this.state = {
       id: false,
-      name: true,
+      name: false,
       gender: false,
       searchStr: ""
     };
   }
 
   handleChange(e) {
+    // console.log(e);
     const { name, checked } = e.target;
-    this.setState({
-      [name]: checked
-    });
+    if (name === "id") {
+      this.setState({ id: checked, name: false, gender: false });
+    }
+    if (name === "name") {
+      this.setState({ id: false, name: checked, gender: false });
+    }
+    if (name === "gender") {
+      this.setState({ id: false, name: false, gender: checked });
+    }
   }
 
   render() {

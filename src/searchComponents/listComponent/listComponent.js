@@ -13,6 +13,17 @@ class ListComponent extends React.Component {
             </tr>
           </thead>
           <tbody>
+            {this.props.list.length === 0 && !this.props.loder && (
+              <tr>
+                <td />
+                <td>Sorry No Matches found</td>
+              </tr>
+            )}
+            {this.props.loder && (
+              <div class="spinner-border text-dark" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+            )}
             {this.props.list.map((user, i) => (
               <tr key={`${user.name}${i}`}>
                 <td>{user._id}</td>
